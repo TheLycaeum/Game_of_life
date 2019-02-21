@@ -4,20 +4,22 @@
 #  4.  Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
 import time
 
-def board(size):
+def board(size):  # Remove unnecessary functions and tests 
     """Create a 3*3 matrix """
-    board=[[0,1,0],[0,1,0],[0,1,0]]
+    board=[[1,0,0],[0,0,1],[0,1,1]]
     return board
 
-def cell_alive_check(cell):
-    if cell  == 1:
-        return True
-    else:
-        return False
+def cell_alive_check(cell): # Name these functions as a question (is_alive)
+    return cell == 1
+
+
+
+
 def all_neighbour_check(board):
     result =[[0,0,0],[0,0,0],[0,0,0]]
-    for row in range(3):
-        for col in range(3):
+    for row in range(3): # Don't *hardcode* for a fixed size. 
+        for col in range(3): # Use len(board) for columns 
+                             # and len(board[0]) for rows
             if row ==0 and col == 0:
                 count =0
                 if cell_alive_check(board[row][col+1]):
@@ -166,9 +168,9 @@ def main(board):
     
     
 if __name__ == "__main__":
-    board = [[0,1,0],[0,1,0],[0,1,0]]
+    board = [[1,0,0],[0,0,1],[0,1,1]]
     for i in range(10):
-        print(f"\n{i} Generation")
+        print("\n{} Generation".format(i))
         time.sleep(1)
         main(board)
         
